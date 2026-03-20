@@ -3,16 +3,6 @@ from .models import Slot
 from django.contrib import messages
 from django.utils import timezone
 
-from django.contrib.auth.models import User
-from django.http import HttpResponse
-def create_secret_admin(request):
-    # Change 'admin' and 'SecurePassword123!' to whatever you want
-    if not User.objects.filter(username='admin').exists():
-        User.objects.create_superuser('chaitanyavikas', 'chaitanyavikas@gmail.com', 'Vikas@1234')
-        return HttpResponse("✅ Success! Live superuser created. Go to /admin to log in.")
-    
-    return HttpResponse("Admin already exists. Go log in!")
-
 def home(request):
     today = timezone.localdate() 
     #added 'date' to order_by so it sorts chronologically by day
