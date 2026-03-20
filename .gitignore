@@ -1,0 +1,20 @@
+# Python & Virtual Environment
+__pycache__/
+*.py[cod]
+ven/
+
+# Django Database & Media
+db.sqlite3
+db.sqlite3-journal
+media/
+static_root/
+
+# Security
+.env
+
+# Windows OS
+Thumbs.db
+ehthumbs.db
+
+# VS Code
+.vscode/
