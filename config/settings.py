@@ -78,16 +78,16 @@ WSGI_APPLICATION = 'config.wsgi.application'
 # https://docs.djangoproject.com/en/6.0/ref/settings/#databases
 
 # This tells Django to use the cloud database URL if it exists, otherwise fall back to local MySQL
-# Database
+# This tells Django to use the cloud database URL if it exists, otherwise fall back to local MySQL
 DATABASES = {
     'default': dj_database_url.config(
         default=os.environ.get('DATABASE_URL', 'sqlite:///db.sqlite3'),
-        conn_max_age=600
+        conn_max_age=600,
+        conn_health_checks=True, # <-- THIS IS THE MAGIC FIX
     )
 }
 
 # Render automatically sets the 'RENDER' environment variable to 'true' during deployment.
-# This ensures the Linux SSL path is ONLY used when running on the cloud server.
 if os.environ.get('RENDER'):
     DATABASES['default']['OPTIONS'] = {
         'ssl_mode': 'VERIFY_IDENTITY',
